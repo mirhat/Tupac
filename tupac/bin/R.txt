@@ -445,7 +445,7 @@ int id action_menu_presenter 0x7f0c0006
 int id action_mode_bar 0x7f0c0042
 int id action_mode_bar_stub 0x7f0c0041
 int id action_mode_close_button 0x7f0c0034
-int id action_settings 0x7f0c0058
+int id action_settings 0x7f0c005a
 int id activity_chooser_view_content 0x7f0c0035
 int id adjust_height 0x7f0c0009
 int id adjust_width 0x7f0c000a
@@ -468,6 +468,7 @@ int id edit_query 0x7f0c0047
 int id end 0x7f0c0030
 int id expand_activities_button 0x7f0c0036
 int id expanded_menu 0x7f0c003c
+int id frontImageControl 0x7f0c0057
 int id grayscale 0x7f0c001e
 int id holo_dark 0x7f0c0010
 int id holo_light 0x7f0c0011
@@ -477,7 +478,6 @@ int id hybrid 0x7f0c000c
 int id icon 0x7f0c003a
 int id ifRoom 0x7f0c002a
 int id image 0x7f0c0037
-int id imageControl 0x7f0c0057
 int id imagesListView1 0x7f0c0053
 int id listMode 0x7f0c0020
 int id list_item 0x7f0c0039
@@ -485,6 +485,7 @@ int id map 0x7f0c0056
 int id match_parent 0x7f0c0017
 int id middle 0x7f0c0031
 int id monochrome 0x7f0c001f
+int id nazivFrontText 0x7f0c0058
 int id never 0x7f0c002b
 int id none 0x7f0c000b
 int id normal 0x7f0c000d
@@ -516,6 +517,7 @@ int id strict_sandbox 0x7f0c0014
 int id submit_area 0x7f0c0050
 int id tabMode 0x7f0c0021
 int id terrain 0x7f0c000f
+int id tipFrontText 0x7f0c0059
 int id title 0x7f0c003b
 int id up 0x7f0c0001
 int id useLogo 0x7f0c0027
@@ -550,8 +552,9 @@ int layout activity_images 0x7f030017
 int layout activity_main 0x7f030018
 int layout fragment_main 0x7f030019
 int layout fragment_map 0x7f03001a
-int layout list_single 0x7f03001b
-int layout support_simple_spinner_dropdown_item 0x7f03001c
+int layout list_place 0x7f03001b
+int layout list_single_image 0x7f03001c
+int layout support_simple_spinner_dropdown_item 0x7f03001d
 int menu main 0x7f0e0000
 int raw gtm_analytics 0x7f050000
 int string abc_action_bar_home_description 0x7f070024

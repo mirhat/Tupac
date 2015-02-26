@@ -17,7 +17,6 @@ import org.json.JSONObject;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.internal.nu;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -44,13 +43,12 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 public class MainActivity extends ActionBarActivity implements
 		ActionBar.TabListener, LocationListener {
@@ -68,6 +66,10 @@ public class MainActivity extends ActionBarActivity implements
 
 	// GoogleMap
 	GoogleMap mGoogleMap;
+	
+	// LinearLayout in first tab
+	LinearLayout mLinearLayout;
+	
 
 	// Stores near by places
 	Place[] mPlaces = null;
@@ -360,6 +362,7 @@ public class MainActivity extends ActionBarActivity implements
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
+			mLinearLayout = (LinearLayout) rootView;
 			return rootView;
 		}
 	}
@@ -432,8 +435,7 @@ public class MainActivity extends ActionBarActivity implements
 
 		@Override
 		public void run() {
-			PlaceDetailsJSONParser.updatePlaceWithDetails(place);
-			
+			PlaceDetailsJSONParser.updatePlaceWithDetails(place);		
 		}
     }
     

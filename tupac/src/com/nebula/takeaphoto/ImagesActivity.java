@@ -83,7 +83,7 @@ public class ImagesActivity extends Activity {
 	*/
 	private class MyListAdapter extends ArrayAdapter<Bitmap> {
 		public MyListAdapter() {
-			super(ImagesActivity.this, R.layout.list_single, images);
+			super(ImagesActivity.this, R.layout.list_single_image, images);
 		}
 
 		@Override
@@ -91,14 +91,14 @@ public class ImagesActivity extends Activity {
 			// Make sure we have a view to work with (may have been given null)
 			View itemView = convertView;
 			if (itemView == null) {
-				itemView = getLayoutInflater().inflate(R.layout.list_single, parent, false);
+				itemView = getLayoutInflater().inflate(R.layout.list_single_image, parent, false);
 			}
 			
 			// Find the car to work with.
 			Bitmap currentImage = images.get(position);
 			
 			// Fill the view
-			ImageView imageView = (ImageView)itemView.findViewById(R.id.imageControl);
+			ImageView imageView = (ImageView)itemView.findViewById(R.id.frontImageControl);
 			imageView.setImageBitmap(currentImage);
 			
 			return itemView;
