@@ -37,6 +37,10 @@ public class ImagesDownloader implements Runnable{
 	ArrayList<Bitmap> slike = null;
 	Bitmap bitmap = null;
 	String url = "https://maps.googleapis.com/maps/api/place/photo?";
+	String key = "key=AIzaSyBU2duM8aCe9xlzCwYXSM18rL8GMv7TMfo";
+	String sensor = "sensor=true";
+	String maxw = "maxwidth=1600";
+	String maxh = "maxheight=1600";
 	public ImagesDownloader(){
 		
 	}
@@ -47,10 +51,7 @@ public class ImagesDownloader implements Runnable{
 			
 		if(mPlace!=null){
 			Photo[] photos = mPlace.mPhotos;				
-			String key = "key=AIzaSyBU2duM8aCe9xlzCwYXSM18rL8GMv7TMfo";
-			String sensor = "sensor=true";
-			String maxw = "maxwidth=1600";
-			String maxh = "maxheight=1600";
+
 			url = url + "&" + key + "&" + sensor + "&" + maxw + "&" + maxh;					
 				
 			// Traversing through all the photoreferences
@@ -79,6 +80,22 @@ public class ImagesDownloader implements Runnable{
 		return slike;
 		
 	}	
+	
+	public Bitmap getImage(String PhotoReference){
+		url = url + "&" + key + "&" + sensor + "&" + maxw + "&" + maxh;	
+		String photoReference = "photoreference="+PhotoReference;
+		url = url + "&" + photoReference;		
+		Thread t = new Thread(this);
+		t.start();
+		try {
+			t.join();
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return bitmap;
+	}
 	
 	private Bitmap downloadImage(String strUrl) throws IOException{
 		Bitmap bitmap=null;

@@ -48,7 +48,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements
 		ActionBar.TabListener, LocationListener {
@@ -68,7 +71,7 @@ public class MainActivity extends ActionBarActivity implements
 	GoogleMap mGoogleMap;
 	
 	// LinearLayout in first tab
-	LinearLayout mLinearLayout;
+	ScrollView mScrollView;
 	
 
 	// Stores near by places
@@ -140,6 +143,11 @@ public class MainActivity extends ActionBarActivity implements
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
+		
+		
+		Thread front = new Thread(new PopulateFrontRunnable());
+		front.start();
+
 	}
 	
 
@@ -239,6 +247,7 @@ public class MainActivity extends ActionBarActivity implements
 
 	// Method for finding places of certain types
 	private void initiatePlaces(String[] types) {
+
 		mGoogleMap.clear();		
 		
         StringBuilder sb = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
@@ -362,7 +371,7 @@ public class MainActivity extends ActionBarActivity implements
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
-			mLinearLayout = (LinearLayout) rootView;
+			mScrollView = (ScrollView) rootView;
 			return rootView;
 		}
 	}
@@ -581,5 +590,72 @@ public class MainActivity extends ActionBarActivity implements
         return data;
     }
 
+    
+    
+    
+    // Class for populating first tab with nearby places
+    private class PopulateFrontRunnable implements Runnable{
 
+    	Place p1 = null;
+		@Override
+		public void run() {
+			while (mPlaces == null) {
+			}	
+			runOnUiThread(new Runnable() {
+			    public void run() {
+			    	LinearLayout mLinearLayout = (LinearLayout) mScrollView.findViewById(R.id.frontLinearLayout);
+			    	mLinearLayout.removeAllViews();
+			    	for (Place p : mPlaces) {
+			    		p1 = p;
+			    		Thread t1 = new Thread(new PomRunnable());
+			    		t1.start();
+			    		try {
+							t1.join();
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+			    		
+			    		
+			    		
+						View listPlace = getLayoutInflater().inflate(R.layout.list_place, null);
+						ImageView picture = (ImageView) listPlace.findViewById(R.id.frontImageControl);
+						TextView title = (TextView) listPlace.findViewById(R.id.nazivFrontText);
+						TextView type = (TextView) listPlace.findViewById(R.id.tipFrontText);
+						if (p.mPlaceName != null) {
+							title.setText(p.mPlaceName);
+						}
+						if (p.mPhotos.length > 0) {
+							ImagesDownloader i = new ImagesDownloader();
+							Bitmap resorce = i.getImage(p.mPhotos[0].mPhotoReference);
+							if (resorce != null) {
+								picture.setImageBitmap(resorce);
+							}
+						}
+						mLinearLayout.addView(listPlace);
+					}
+			    }
+			});
+			
+			
+			
+			try {
+				Thread.sleep(100000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		private class PomRunnable implements Runnable{
+
+			@Override
+			public void run() {
+				PlaceDetailsJSONParser.updatePlaceWithDetails(p1);
+				
+			}
+			
+		}
+		
+    }
+ 
 }

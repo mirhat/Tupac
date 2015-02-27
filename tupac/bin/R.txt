@@ -445,7 +445,7 @@ int id action_menu_presenter 0x7f0c0006
 int id action_mode_bar 0x7f0c0042
 int id action_mode_bar_stub 0x7f0c0041
 int id action_mode_close_button 0x7f0c0034
-int id action_settings 0x7f0c005a
+int id action_settings 0x7f0c005b
 int id activity_chooser_view_content 0x7f0c0035
 int id adjust_height 0x7f0c0009
 int id adjust_width 0x7f0c000a
@@ -468,7 +468,9 @@ int id edit_query 0x7f0c0047
 int id end 0x7f0c0030
 int id expand_activities_button 0x7f0c0036
 int id expanded_menu 0x7f0c003c
-int id frontImageControl 0x7f0c0057
+int id frontImageControl 0x7f0c0058
+int id frontLinearLayout 0x7f0c0056
+int id frontScrollViw 0x7f0c0055
 int id grayscale 0x7f0c001e
 int id holo_dark 0x7f0c0010
 int id holo_light 0x7f0c0011
@@ -481,11 +483,11 @@ int id image 0x7f0c0037
 int id imagesListView1 0x7f0c0053
 int id listMode 0x7f0c0020
 int id list_item 0x7f0c0039
-int id map 0x7f0c0056
+int id map 0x7f0c0057
 int id match_parent 0x7f0c0017
 int id middle 0x7f0c0031
 int id monochrome 0x7f0c001f
-int id nazivFrontText 0x7f0c0058
+int id nazivFrontText 0x7f0c0059
 int id never 0x7f0c002b
 int id none 0x7f0c000b
 int id normal 0x7f0c000d
@@ -506,7 +508,6 @@ int id search_mag_icon 0x7f0c004c
 int id search_plate 0x7f0c004d
 int id search_src_text 0x7f0c004e
 int id search_voice_btn 0x7f0c0052
-int id section_label 0x7f0c0055
 int id selectionDetails 0x7f0c0016
 int id shortcut 0x7f0c003e
 int id showCustom 0x7f0c0024
@@ -517,7 +518,7 @@ int id strict_sandbox 0x7f0c0014
 int id submit_area 0x7f0c0050
 int id tabMode 0x7f0c0021
 int id terrain 0x7f0c000f
-int id tipFrontText 0x7f0c0059
+int id tipFrontText 0x7f0c005a
 int id title 0x7f0c003b
 int id up 0x7f0c0001
 int id useLogo 0x7f0c0027
